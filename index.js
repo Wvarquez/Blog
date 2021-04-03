@@ -68,14 +68,8 @@ app.get("/posts/:postName", function(req, res){
 
 });
 
-// need to write out an app.get function that open a route /weather Need an EJS view called weather.ejs that displays one text field to input city name
-//This EJS view will input a city name from user
-// Then need to write out an app.get function that will use the city name to query the Weather API to retrieve basic weather information - temperature, description and humidity
-// The display of the weather information must be saved to an array and then the results of the array must be pushed to the /weather EJS view to display
-// The /weather route and page created by weather.ejs page should allow for the input of the city name, and the display of the weather for the city - temperature in F, description and humidity
 let weathers = [];
 
-//getting the weather page
 app.get("/weather", function(req,res){
   res.render("weather", {
     weathers:weathers
@@ -83,8 +77,6 @@ app.get("/weather", function(req,res){
 });
 
 app.post("/weather", function(req,res){
-//weathers array will be cleared everytime a post is made
-weathers = [];
       const city = req.body.city;
       const units = "imperial";
       const apiKey = "77aff363fb557f22a19308aabc2735a6"; 
@@ -111,7 +103,6 @@ weathers = [];
                 humidity: humidity,
                 windDirection: windDirection
               };
-              
               weathers.push(weather);
               res.redirect("/weather");
 
