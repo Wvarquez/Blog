@@ -1,4 +1,3 @@
-//jshint esversion:6
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -72,7 +71,7 @@ let weathers = [];
 
 app.get("/weather", function(req,res){
   res.render("weather", {
-    weathers:weathers
+    weathers: weathers
   });
 });
 
